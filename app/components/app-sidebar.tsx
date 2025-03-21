@@ -152,7 +152,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <GalleryVerticalEnd className="size-4" />
             </div>
             <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-medium">EzTrade</span>
+              <span className="truncate font-medium">EzTrade v{__APP_VERSION__}</span>
             </div>
           </SidebarMenuButton>
         </SidebarMenu>

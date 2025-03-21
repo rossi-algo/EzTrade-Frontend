@@ -53,6 +53,7 @@ export const PlaceTradeForm: React.FC<{ children?: React.ReactNode, account_ids:
             await placeTrade({
                 values: {
                     ...values,
+                    trigger_price: values.trigger_price ? undefined : values.trigger_price,
                     direction: directionRef.current,
                 }, token: await user.getIdToken()
             })
@@ -87,6 +88,32 @@ export const PlaceTradeForm: React.FC<{ children?: React.ReactNode, account_ids:
                 render={({ field }) => (
                     <FormItem>
                         <FormLabel>Trigger Price</FormLabel>
+                        <FormControl>
+                            <Input disabled={isSubmitting} {...field} />
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>
+                )}
+            />
+            <FormField
+                control={form.control}
+                name="entry_price"
+                render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Entry Price</FormLabel>
+                        <FormControl>
+                            <Input disabled={isSubmitting} {...field} />
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>
+                )}
+            />
+            <FormField
+                control={form.control}
+                name="sl_in_pips"
+                render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>Stoploss</FormLabel>
                         <FormControl>
                             <Input disabled={isSubmitting} {...field} />
                         </FormControl>

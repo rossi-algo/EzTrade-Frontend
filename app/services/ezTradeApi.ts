@@ -13,7 +13,21 @@ export const placeTradeFormSchema = z.object({
         .refine((value) => !isNaN(Number(value)), {
             message: "Expected number, received string",
         })
-        .optional()
+        .optional(),
+    entry_price: z
+        .string()
+        .transform((value) => (value === "" ? "" : Number(value)))
+        .refine((value) => !isNaN(Number(value)), {
+            message: "Expected number, received string",
+        })
+        .optional(),
+    sl_in_pips: z
+        .string()
+        .transform((value) => (value === "" ? "" : Number(value)))
+        .refine((value) => !isNaN(Number(value)), {
+            message: "Expected number, received string",
+        })
+        .optional(),
 })
 
 const url = import.meta.env.VITE_EZTRADE_API_URL || "http://localhost:8000"
